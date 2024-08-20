@@ -42,8 +42,8 @@ export default function Shortener() {
       };
 
       setLinks((prevLinks) => {
-        // Clear links if request count reaches 3
-        if (requestCount + 1 === 3) {
+        // Clear links if request count reaches 2
+        if (requestCount + 1 === 2) {
           alert ("Failed to shorten the URL. Copy the others or input again.");
           return [];
         }
@@ -51,7 +51,7 @@ export default function Shortener() {
       });
 
       setText("");
-      setRequestCount((prevCount) => (prevCount + 1) % 3); // Increment and reset count after reaching 3
+      setRequestCount((prevCount) => (prevCount + 1) % 2); // Increment and reset count after reaching 2
     } catch (error) {
       console.error("Error shortening the link:", error);
       setError(error.message); // Set error message to state

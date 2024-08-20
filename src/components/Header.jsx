@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="header max-width py-5">
+      <header className="header max-width py-5 relative">
         <div className="flex items-center justify-between">
           <article className="flex items-center">
             <img src={Logo} alt="Logo" className="w-50 h-10" />
@@ -35,17 +35,19 @@ export default function Header() {
           </article>
 
           {isOpen && (
-            <div className="absolute left-5 right-5 top-20 rounded bg-slate-900 text-slate-200 text-center py-10 md:relative md:top-0 md:left-0 md:right-0 md:bg-transparent md:text-slate-700 md:text-left md:py-0 md:flex md:items-center">
+            <div
+              className="absolute left-5 right-5 top-20 rounded bg-slate-900 text-slate-200 text-center py-10 md:relative md:top-0 md:left-0 md:right-0 md:bg-transparent md:text-slate-700 md:text-left md:py-0 md:flex md:items-center z-50"
+            >
               <nav className="md:hidden">
                 <ul className="flex flex-col items-center justify-center">
                   <li>
-                    <button>Features</button>
+                    <HashLink smooth to="/">Home</HashLink>
                   </li>
                   <li className="my-5">
-                    <button>Pricing</button>
+                    <HashLink smooth to="/#advanced">Advanced</HashLink>
                   </li>
                   <li>
-                    <button>Resources</button>
+                    <HashLink smooth to="/#boost">Boost</HashLink>
                   </li>
                 </ul>
               </nav>

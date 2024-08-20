@@ -10,7 +10,7 @@ export default function Advanced() {
           <h2 className="text-4xl font-bold text-slate-800 mb-3 text-center">
             Advanced Statistics
           </h2>
-          <p className="text-slate-400 text-center mb-10 lg:mb-20">
+          <p className="text-slate-400 text-[14px] text-center mb-10 lg:mb-20">
             Monitor your link performance across the internet <br /> using our
             comprehensive statistics platform.
           </p>
