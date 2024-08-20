@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Logo from "../images/logo.png";
+import logo from "../images/logo.png";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link"; // Import HashLink
 
@@ -11,7 +11,7 @@ export default function Header() {
       <header className="header max-width py-5 relative">
         <div className="flex items-center justify-between">
           <article className="flex items-center">
-            <img src={Logo} alt="Logo" className="w-50 h-10" />
+            <img src={logo} alt="Logo" className="w-50 h-10" />
 
             <nav className="hidden md:block md:ml-5">
               <ul className="flex items-start justify-start">
