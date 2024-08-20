@@ -1,29 +1,34 @@
-import { useState } from "react"
-import Logo from "../images/logo.png"
-import { HashLink } from 'react-router-hash-link';
+import { useState } from "react";
+import Logo from "../images/logo.png";
 import { Link } from "react-router-dom";
-
+import { HashLink } from "react-router-hash-link"; // Import HashLink
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
       <header className="header max-width py-5">
         <div className="flex items-center justify-between">
           <article className="flex items-center">
-            <img src={Logo} alt="Logo" className="w-50 h-10"/>
+            <img src={Logo} alt="Logo" className="w-50 h-10" />
 
             <nav className="hidden md:block md:ml-5">
               <ul className="flex items-start justify-start">
                 <li>
-                  <button className="text-slate-400">Features</button>
+                  <Link className="text-slate-400" to="/">
+                    Home
+                  </Link>
                 </li>
                 <li className="my-5 md:my-0 md:mx-5">
-                  <button className="text-slate-400">Pricing</button>
+                  <HashLink className="text-slate-400" smooth to="/#advanced">
+                    Advanced
+                  </HashLink>
                 </li>
                 <li>
-                  <button className="text-slate-400">Resources</button>
+                  <HashLink className="text-slate-400" smooth to="/#boost">
+                    Boost
+                  </HashLink>
                 </li>
               </ul>
             </nav>
@@ -46,10 +51,14 @@ export default function Header() {
               </nav>
               <ul className="flex flex-col items-center justify-center">
                 <li className="my-5">
-                  <button className="text-slate-400">Login</button>
+                  <Link to="/login" className="text-slate-400">
+                    Login
+                  </Link>
                 </li>
                 <li>
-                  <button className="btn-cta rounded-full">Sign Up</button>
+                  <Link to="/signup" className="btn-cta rounded-full">
+                    Sign Up
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -58,10 +67,14 @@ export default function Header() {
           <div className="hidden md:block">
             <ul className="flex items-center ml-5">
               <li className="my-5 md:my-0 md:mr-5">
-                <button className="text-slate-400">Login</button>
+                <Link to="/login" className="text-slate-400">
+                  Login
+                </Link>
               </li>
               <li>
-                <button className="btn-cta rounded-full">Sign Up</button>
+                <Link to="/signup" className="btn-cta rounded-full">
+                  Sign Up
+                </Link>
               </li>
             </ul>
           </div>
@@ -75,5 +88,5 @@ export default function Header() {
         </div>
       </header>
     </>
-  )
+  );
 }

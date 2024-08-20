@@ -10,7 +10,8 @@ const getLocalStorage = () => {
 export default function Shortener() {
   const [text, setText] = useState("");
   const [links, setLinks] = useState(getLocalStorage());
-  const [buttonText, setButtonText] = useState("Copy");
+  const [requestCount, setRequestCount] = useState(0);
+  const [error, setError] = useState(""); // State for error messages
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,7 +26,7 @@ export default function Shortener() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'acf8bf912e5b07a97d595b4f704e23d8362c88cd'
+          'Authorization': 'Bearer acf8bf912e5b07a97d595b4f704e23d8362c88cd'
         },
         body: JSON.stringify({ long_url: text })
       });
@@ -39,19 +40,30 @@ export default function Shortener() {
         original_link: text,
         full_short_link: data.link
       };
-      
-      setLinks((prevLinks) => [...prevLinks, newLink]);
+
+      setLinks((prevLinks) => {
+        // Clear links if request count reaches 3
+        if (requestCount + 1 === 3) {
+          alert ("Failed to shorten the URL. Copy the others or input again.");
+          return [];
+        }
+        return [...prevLinks, newLink];
+      });
+
       setText("");
+      setRequestCount((prevCount) => (prevCount + 1) % 3); // Increment and reset count after reaching 3
     } catch (error) {
       console.error("Error shortening the link:", error);
-      alert("Failed to shorten the link. Please try again.");
+      setError(error.message); // Set error message to state
     }
   };
 
-  const handleCopy = (shortLink) => {
+  const handleCopyAndDelete = (shortLink, index) => {
     navigator.clipboard.writeText(shortLink);
-    setButtonText("Copied!");
-    setTimeout(() => setButtonText("Copy"), 2000); // Reset button text after 2 seconds
+
+    // Delete Part
+    const updatedLinks = links.filter((_, i) => i !== index);
+    setLinks(updatedLinks);
   };
 
   useEffect(() => {
@@ -70,7 +82,7 @@ export default function Shortener() {
           <input
             type="url"
             placeholder="Shorten a link here"
-            className="w-full py-2 px-5 rounded-lg  mb-2 md:mb-0 md:w-2/3"
+            className="w-full py-2 px-5 rounded-lg mb-2 md:mb-0 md:w-2/3"
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
@@ -83,10 +95,12 @@ export default function Shortener() {
         </div>
       </form>
 
+      {error && <p className="text-red-500">{error}</p>} {/* Display error message */}
+
       {links.length > 0 && (
-        <div className=" flex flex-col items-center justify-center bg-white text-center md:flex-row md:justify-between p-3 mt-3 rounded-lg shadow">
+        <div className="flex flex-col items-center justify-center bg-white text-center md:flex-row md:justify-between p-3 mt-3 rounded-lg shadow">
           {links.map((link, index) => (
-            <div key={index} className="flex flex-col md:flex-row md:items-center md:justify-between w-full mb-4 ">
+            <div key={index} className="flex flex-col md:flex-row md:items-center md:justify-between w-full mb-4">
               <h6 className="mb-3 md:mb-0">{link.original_link}</h6>
               <ul className="md:flex md:items-center">
                 <li className="md:mr-5">
@@ -96,10 +110,10 @@ export default function Shortener() {
                 </li>
                 <li>
                   <button
-                    onClick={() => handleCopy(link.full_short_link)}
+                    onClick={() => handleCopyAndDelete(link.full_short_link, index)}
                     className="btn-cta rounded-lg text-sm focus:bg-slate-800"
                   >
-                    {buttonText}
+                    Copy
                   </button>
                 </li>
               </ul>

@@ -4,7 +4,7 @@ import bgDesktop from "../images/bg-boost-desktop.svg"
 export default function Boost() {
   return (
     <>
-      <section className="boost relative">
+      <section className="boost relative" id="boost">
         <picture>
           <source media="(min-width: 768px)" srcSet={bgDesktop} />
           <img src={bgMobile} alt="" />
