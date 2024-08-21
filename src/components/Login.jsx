@@ -45,7 +45,7 @@ export default function Login() {
           Login
         </h2>
         {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
-        <form onSubmit={handleSubmit} className="mb-4">
+        <form onSubmit={handleSubmit} className="mb-4 p-6">
           <div className="mb-4">
             <label
               htmlFor="email"
