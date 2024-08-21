@@ -39,8 +39,8 @@ export default function Login() {
   };
 
   return (
-    <section className="flex flex-col items-center justify-center bg-red">
-      <div className="bg-white rounded-lg shadow-md p-6 md:w-max lg:w-max">
+    <section className="max-w-md mx-auto p-8 flex flex-col items-center justify-center bg-[#ffffff]">
+      <div className=" bg-white rounded-lg shadow-md md:w-max lg:w-max">
         <h2 className="text-[30px] uppercase font-medium mb-4 text-center">
           Login
         </h2>
@@ -96,7 +96,7 @@ export default function Login() {
           </div>
           <button
             type="submit"
-            className="btn-cta rounded-full w-[400px]"
+            className="btn-cta rounded-full w-[350px]"
             disabled={loading} // Disable button when loading
           > 
             {loading ? <span className="loader" /> : "Sign In"}{" "}

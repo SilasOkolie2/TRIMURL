@@ -62,7 +62,7 @@ export default function SignUp() {
   };
 
   return (
-    <section className="max-w-md mx-auto bg-[#ffffff] p-4 rounded-lg shadow-lg">
+    <section className="max-w-md mx-auto bg-[#ffffff] p-6 rounded-lg shadow-lg">
       <div className="text-center">
         <h1 className="text-[30px] uppercase font-medium mb-4 text-center">
           Sign <span className="text-sky-600">Up</span>
