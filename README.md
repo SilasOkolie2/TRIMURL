@@ -1,6 +1,6 @@
 # TRIMURL
 
-TRIMURL is a URL shortening service that allows users to shorten and manage their URLs efficiently. The application provides an easy-to-use interface for shortening URLs, copying shortened links, and managing link history.
+TRIMLINKS is a URL shortening service that allows users to shorten and manage their URLs efficiently. The application provides an easy-to-use interface for shortening URLs, copying shortened links, and managing link history.
 
 ## Features
 
