@@ -39,7 +39,7 @@ export default function Login() {
   };
 
   return (
-    <section className="max-w-md mx-auto p-8 flex flex-col items-center justify-center bg-[#ffffff]">
+    <section className="max-w-md mx-auto p-16 flex flex-col items-center justify-center bg-[#ffffff]">
       <div className=" bg-white rounded-lg shadow-md md:w-max lg:w-max">
         <h2 className="text-[30px] uppercase font-medium mb-4 text-center">
           Login
